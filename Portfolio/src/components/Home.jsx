@@ -39,7 +39,7 @@ export default function Portfolio() {
           web applications from early on in my journey.
         </p>
         <p className="text-md text-[#475569] mt-2">
-          Web Developer @ Coding Blocks KARE | Technical Member @ Vishaka KARE
+          {/* Web Developer @ Coding Blocks KARE | Technical Member @ Vishaka KARE */}
         </p>
         <p className="text-md text-[#475569] mt-2">
           I'm driven by curiosity, love learning new technologies, and enjoy
