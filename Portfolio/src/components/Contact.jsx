@@ -1,5 +1,11 @@
-// Contact.jsx
 import { motion } from "framer-motion";
+
+const contactIcons = {
+  email: "/icons/email.png",      // Add your actual icon files!
+  phone: "/icons/phone.png",
+  linkedin: "/icons/linkedin.svg",
+  github: "/icons/github.svg"
+};
 
 export default function Contact() {
   return (
@@ -24,12 +30,13 @@ export default function Contact() {
           Interested in working together or just want to say hi? Reach out!
         </p>
       </motion.header>
-      
+
       {/* Contact Info */}
       <section className="w-full max-w-lg px-8 py-8 rounded-2xl shadow-lg bg-white">
         <ul className="space-y-6 text-[#475569] text-md">
-          <li>
-            📧 <span className="font-semibold">Email:</span>{" "}
+          <li className="flex items-center gap-3">
+            <img src={contactIcons.email} alt="Email" className="w-6 h-6" />
+            <span className="font-semibold">Email:</span>{" "}
             <a
               href="mailto:kolleparajayanth@gmail.com"
               className="text-[#3B82F6] hover:underline"
@@ -39,12 +46,14 @@ export default function Contact() {
               kolleparajayanth@gmail.com
             </a>
           </li>
-          <li>
-            📱 <span className="font-semibold">Phone:</span>{" "}
+          <li className="flex items-center gap-3">
+            <img src={contactIcons.phone} alt="Phone" className="w-6 h-6" />
+            <span className="font-semibold">Phone:</span>{" "}
             <span className="text-[#1E293B]">+91 8869965959</span>
           </li>
-          <li>
-            🌐 <span className="font-semibold">LinkedIn:</span>{" "}
+          <li className="flex items-center gap-3">
+            <img src={contactIcons.linkedin} alt="LinkedIn" className="w-6 h-6" />
+            <span className="font-semibold">LinkedIn:</span>{" "}
             <a
               href="https://www.linkedin.com/in/jayanth-kollepara-54876b319/"
               target="_blank"
@@ -54,8 +63,9 @@ export default function Contact() {
               linkedin.com/in/jayanth
             </a>
           </li>
-          <li>
-            💻 <span className="font-semibold">GitHub:</span>{" "}
+          <li className="flex items-center gap-3">
+            <img src={contactIcons.github} alt="GitHub" className="w-6 h-6" />
+            <span className="font-semibold">GitHub:</span>{" "}
             <a
               href="https://github.com/Jayanth-7-github"
               target="_blank"
@@ -67,7 +77,7 @@ export default function Contact() {
           </li>
         </ul>
       </section>
-      
+
       {/* Call to Action */}
       <motion.div
         className="mt-12 text-center"
@@ -85,7 +95,7 @@ export default function Contact() {
           Send me an email
         </a>
       </motion.div>
-      
+
       {/* Footer */}
       <footer className="text-center text-sm text-[#94A3B8] mt-12">
         I’ll reply as quickly as possible • © 2025 Jayanth Kollepara

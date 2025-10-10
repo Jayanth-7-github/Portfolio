@@ -1,6 +1,10 @@
-// Home.jsx
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
+
+const platformIcons = {
+  github: "/icons/github.svg",
+  leetcode: "/icons/leetcode.png"
+};
 
 export default function Home() {
   return (
@@ -73,7 +77,10 @@ export default function Home() {
           className="flex-1 bg-white px-6 py-5 rounded-xl border shadow flex flex-col items-start"
           whileHover={{ y: -8, scale: 1.03, boxShadow: "0 6px 20px #6366f120" }}
         >
-          <span className="text-[#3B82F6] text-lg font-bold mb-1">💻 GitHub</span>
+          <div className="flex items-center mb-1 gap-2">
+            <img src={platformIcons.github} alt="GitHub" className="w-7 h-7" />
+            <span className="text-[#3B82F6] text-lg font-bold">GitHub</span>
+          </div>
           <a
             href="https://github.com/Jayanth-7-github"
             target="_blank"
@@ -91,7 +98,10 @@ export default function Home() {
           className="flex-1 bg-white px-6 py-5 rounded-xl border shadow flex flex-col items-start"
           whileHover={{ y: -8, scale: 1.03, boxShadow: "0 6px 20px #6366f120" }}
         >
-          <span className="text-[#3B82F6] text-lg font-bold mb-1">🧠 LeetCode</span>
+          <div className="flex items-center mb-1 gap-2">
+            <img src={platformIcons.leetcode} alt="LeetCode" className="w-7 h-7" />
+            <span className="text-[#3B82F6] text-lg font-bold">LeetCode</span>
+          </div>
           <a
             href="https://leetcode.com/u/Jayanth-7/"
             target="_blank"
