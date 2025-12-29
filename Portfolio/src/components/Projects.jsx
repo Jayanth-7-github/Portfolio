@@ -11,6 +11,14 @@ const projects = [
     tags: ["Event Management", "Web App", "React", "Node.js", "MongoDB"],
   },
   {
+    name: "Yexo",
+    desc: "A real-time chat web app for messaging and conversations.",
+    img: "",
+    repo: "https://github.com/Jayanth-7-github/Yexo",
+    demo: "https://yexochat.netlify.app/",
+    tags: ["Chat App", "Real-time", "Web App", "React", "Node.js"],
+  },
+  {
     name: "Rock Paper Scissors",
     desc: "Fun interactive rock-paper-scissors game. Play online, test your luck and see simple state/game logic.",
     img: "",
