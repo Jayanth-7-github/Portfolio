@@ -1,7 +1,18 @@
 import PageWrapper from "./PageWrapper";
 import { useMemo, useState } from "react";
+import { HoverEffect } from "./ui/HoverEffect";
+import { GridBackground } from "./ui/GridBackground";
+import { TextGenerateEffect } from "./ui/TextGenerateEffect";
 
 const projects = [
+  {
+    name: "EcoSphere",
+    desc: "An eco-conscious community platform for resilient support during natural disasters. Features resource sharing, alert system, and more.",
+    img: "",
+    repo: "https://github.com/kalviumcommunity/s81_Jayanth_Ecosphere",
+    demo: "https://ecospheere.netlify.app/",
+    tags: ["React", "Node.js", "Community"],
+  },
   {
     name: "Tara",
     desc: "An event management system for organizing events and streamlining coordination.",
@@ -9,14 +20,6 @@ const projects = [
     repo: "https://github.com/Jayanth-7-github/Tara",
     demo: "https://taara.netlify.app/",
     tags: ["Event Management", "Web App", "React", "Node.js", "MongoDB"],
-  },
-  {
-    name: "Yexo",
-    desc: "A real-time chat web app for messaging and conversations.",
-    img: "",
-    repo: "https://github.com/Jayanth-7-github/Yexo",
-    demo: "https://yexochat.netlify.app/",
-    tags: ["Chat App", "Real-time", "Web App", "React", "Node.js"],
   },
   {
     name: "Rock Paper Scissors",
@@ -27,17 +30,17 @@ const projects = [
     tags: ["React", "Game", "JavaScript"],
   },
   {
-    name: "EcoSphere",
-    desc: "An eco-conscious community platform for resilient support during natural disasters. Features resource sharing, alert system, and more.",
+    name: "Yexo",
+    desc: "A real-time chat web and mobile app for messaging and conversations.",
     img: "",
-    repo: "https://github.com/kalviumcommunity/s81_Jayanth_Ecosphere",
-    demo: "",
-    tags: ["React", "Node.js", "Community"],
+    repo: "https://github.com/Jayanth-7-github/Yexo",
+    demo: "https://yexochat.netlify.app/",
+    tags: ["Chat App", "Real-time", "Web App", "Mobile App", "React"],
   },
   {
     name: "E-commerce",
-    desc: "A full-stack platform for managing products, categories, and inventory using the MERN stack (MongoDB, Express, React, Node). Includes admin dashboard and secure authentication.",
-    img: "", // e.g. "/images/ecommerce.png" or leave blank for placeholder
+    desc: "A full-stack platform for managing products, categories, and inventory using the MERN stack (MongoDB, Express, React, Node). Includes admin dashboard.",
+    img: "",
     repo: "https://github.com/Jayanth-7-github/Follow-Along-Eshop",
     demo: "",
     tags: ["React", "Node.js", "MongoDB", "Express"],
@@ -48,7 +51,7 @@ const projects = [
     img: "",
     repo: "https://github.com/Jayanth-7-github/PatientManagment",
     demo: "https://labtes.netlify.app/",
-    tags: ["React", "Node.js", "Express", "MongoDB", "JWT", "Tailwind CSS"],
+    tags: ["React", "Node.js", "Express", "MongoDB", "Tailwind"],
   },
   {
     name: "Snake & Ladders",
@@ -64,16 +67,79 @@ function getGithubOpenGraphImage(repoUrl) {
   try {
     const url = new URL(repoUrl);
     if (url.hostname !== "github.com") return "";
-
     const [owner, repo] = url.pathname.replace(/^\//, "").split("/");
     if (!owner || !repo) return "";
-
-    // Public OG image endpoint used by GitHub for link previews.
-    // The middle segment can be any string (used as a cache key).
     return `https://opengraph.githubassets.com/1/${owner}/${repo}`;
   } catch {
     return "";
   }
+}
+
+const ProjectCardContent = ({ project, preview, isBroken, onImageError }) => {
+  return (
+    <div className="flex flex-col h-full">
+      {/* Image Preview */}
+      <div className="w-full h-40 bg-white/5 border border-white/10 rounded-xl mb-4 overflow-hidden relative group-hover:scale-[1.02] transition-transform duration-300">
+        {preview && !isBroken ? (
+          <img
+            src={preview}
+            alt={`${project.name} screenshot`}
+            className="object-cover w-full h-full"
+            loading="lazy"
+            onError={onImageError}
+          />
+        ) : (
+          <div className="w-full h-full flex flex-col items-center justify-center text-slate-500 bg-slate-900/50">
+            <svg width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="mb-2 opacity-50">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+            </svg>
+            <span className="text-xs">No Preview</span>
+          </div>
+        )}
+      </div>
+
+      <h3 className="text-xl font-bold text-slate-100 mb-2">{project.name}</h3>
+      <p className="text-slate-400 text-sm leading-relaxed mb-4 flex-grow">
+        {project.desc}
+      </p>
+
+      {/* Tags */}
+      <div className="flex flex-wrap gap-2 mb-4">
+        {project.tags?.slice(0, 4).map((tag) => (
+          <span
+            key={tag}
+            className="bg-zinc-800 text-zinc-300 px-2 py-0.5 rounded text-[10px] font-medium tracking-wide border border-zinc-700"
+          >
+            {tag}
+          </span>
+        ))}
+      </div>
+
+      {/* Links */}
+      <div className="flex items-center gap-4 mt-auto pt-2 border-t border-white/10">
+        <a
+          href={project.repo}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex items-center gap-1.5 text-xs font-semibold text-zinc-300 hover:text-white transition-colors"
+        >
+          <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" /></svg>
+          GitHub
+        </a>
+        {project.demo ? (
+          <a
+            href={project.demo}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-1.5 text-xs font-semibold text-emerald-400 hover:text-emerald-300 transition-colors"
+          >
+            <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+            Live Demo
+          </a>
+        ) : null}
+      </div>
+    </div>
+  );
 }
 
 export default function Projects() {
@@ -87,137 +153,40 @@ export default function Projects() {
     return map;
   }, []);
 
+  const projectItems = projects.map((p) => ({
+    name: p.name,
+    component: (
+      <ProjectCardContent
+        project={p}
+        preview={previews[p.name]}
+        isBroken={broken[p.name]}
+        onImageError={() => setBroken((prev) => ({ ...prev, [p.name]: true }))}
+      />
+    )
+  }));
+
+  const introText = "A collection of my recent work and open source contributions.";
+
   return (
-    <PageWrapper>
-      <section className="w-full max-w-5xl mx-auto bg-white/5 border border-white/10 backdrop-blur px-4 sm:px-8 py-8 rounded-2xl shadow-xl shadow-black/30 mb-8">
-        <h2 className="text-3xl font-bold text-slate-50 mb-8 border-b border-white/10 pb-2 tracking-tight">
+    <PageWrapper className="relative overflow-hidden">
+      {/* Grid Background */}
+      <div className="absolute inset-0 w-full h-full z-0 pointer-events-none">
+        <GridBackground />
+      </div>
+
+      <div className="relative z-10 max-w-6xl mx-auto px-6 py-12">
+        <h2 className="text-4xl font-bold text-slate-100 mb-2 tracking-tight text-center">
           Projects
         </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {projects.map((project, i) => (
-            <div
-              key={project.name}
-              className="bg-white/5 p-6 rounded-2xl shadow-xl shadow-black/30 border border-white/10 hover:border-violet-400/50 hover:-translate-y-1.5 hover:bg-white/7 group transition-all relative flex flex-col"
-            >
-              {/* Image Preview or Placeholder */}
-              <div className="w-full h-36 bg-white/5 border border-white/10 flex items-center justify-center rounded-xl mb-4 overflow-hidden">
-                {previews[project.name] && !broken[project.name] ? (
-                  <img
-                    src={previews[project.name]}
-                    alt={`${project.name} screenshot`}
-                    className="object-cover w-full h-full"
-                    loading="lazy"
-                    decoding="async"
-                    referrerPolicy="no-referrer"
-                    onError={() =>
-                      setBroken((prev) => ({ ...prev, [project.name]: true }))
-                    }
-                  />
-                ) : (
-                  <span className="text-slate-500 text-sm">
-                    No Preview Available
-                  </span>
-                )}
-              </div>
-              {/* Title */}
-              <h3 className="text-xl font-bold text-slate-50 mb-2 group-hover:text-violet-300 transition">
-                {project.name}
-              </h3>
-              {/* Description */}
-              {project.desc ? (
-                <p className="text-slate-300 mb-3 text-sm leading-relaxed min-h-[60px]">
-                  {project.desc}
-                </p>
-              ) : null}
-              {/* Tags */}
-              <div className="flex flex-wrap gap-2 mb-4">
-                {project.tags?.map((tag) => (
-                  <span
-                    key={tag}
-                    className="bg-white/5 border border-white/10 text-indigo-200 px-2.5 py-1 rounded-lg text-xs font-semibold"
-                  >
-                    {tag}
-                  </span>
-                ))}
-              </div>
-              {/* Links */}
-              <div className="flex items-center gap-5 mt-auto">
-                <a
-                  href={project.repo}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={`GitHub repository for ${project.name}`}
-                  className="flex items-center gap-1 text-cyan-300 font-medium underline text-sm hover:text-cyan-200 transition"
-                >
-                  <svg
-                    width="18"
-                    height="18"
-                    fill="currentColor"
-                    className="inline-block mr-1"
-                    aria-hidden="true"
-                  >
-                    <path d="M9 0a9 9 0 00-2.85 17.54c.45.08.62-.2.62-.45 0-.22-.01-.81-.01-1.59-2.26.49-2.74-1.09-2.74-1.09-.4-1.04-.98-1.32-.98-1.32-.8-.54.06-.53.06-.53.89.06 1.36.92 1.36.92.78 1.35 2.05.96 2.55.74.08-.56.3-.96.54-1.18-1.8-.2-3.7-.9-3.7-4a3.14 3.14 0 01.84-2.21c-.08-.2-.37-1.01.08-2.12 0 0 .7-.23 2.3.85a8.1 8.1 0 012.1-.28c.71 0 1.43.09 2.1.28 1.6-1.08 2.3-.85 2.3-.85.45 1.11.17 1.92.08 2.12.52.57.84 1.28.84 2.21 0 3.1-1.9 3.8-3.71 4 .31.28.58.82.58 1.65 0 1.18-.01 2.14-.01 2.43 0 .25.17.54.63.45A9.001 9.001 0 009 0" />
-                  </svg>
-                  GitHub
-                </a>
-                {project.demo ? (
-                  <a
-                    href={project.demo}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={`Live demo for ${project.name}`}
-                    className="flex items-center gap-1 font-medium text-emerald-300 underline text-sm hover:text-emerald-200 transition"
-                  >
-                    <svg
-                      width="18"
-                      height="18"
-                      fill="currentColor"
-                      className="inline-block mr-1"
-                      aria-hidden="true"
-                    >
-                      <circle cx="9" cy="9" r="8" />
-                      <path d="M13 9L7 6v6l6-3z" fill="currentColor" />
-                    </svg>
-                    Live Demo
-                  </a>
-                ) : (
-                  <span className="flex items-center gap-1 text-slate-500 text-xs">
-                    <svg
-                      width="16"
-                      height="16"
-                      fill="none"
-                      className="inline-block text-slate-600"
-                      aria-hidden="true"
-                    >
-                      <circle
-                        cx="8"
-                        cy="8"
-                        r="8"
-                        fill="currentColor"
-                        opacity="0.35"
-                      />
-                      <text
-                        x="8"
-                        y="11"
-                        fontSize="9"
-                        fontFamily="Arial"
-                        fill="currentColor"
-                        textAnchor="middle"
-                      >
-                        ⏳
-                      </text>
-                    </svg>
-                    Demo Not Available
-                  </span>
-                )}
-              </div>
-            </div>
-          ))}
+
+        <div className="flex justify-center mb-10">
+          <TextGenerateEffect words={introText} className="text-lg text-slate-400 font-normal" />
         </div>
-      </section>
-      <footer className="text-center text-xs text-slate-500 mt-8">
-        Want details on a project? Let&apos;s talk!
-      </footer>
+
+        <HoverEffect items={projectItems} />
+
+
+      </div>
     </PageWrapper>
   );
 }

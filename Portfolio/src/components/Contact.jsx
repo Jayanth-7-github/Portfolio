@@ -1,91 +1,115 @@
+import PageWrapper from "./PageWrapper";
+import { motion } from "framer-motion";
+import { GridBackground } from "./ui/GridBackground";
+import { TextGenerateEffect } from "./ui/TextGenerateEffect";
+
 const contactIcons = {
-  email: "/icons/email.png", // Add your actual icon files!
+  email: "/icons/email.png",
   phone: "/icons/phone.png",
   linkedin: "/icons/linkedin.svg",
   github: "/icons/github.svg",
 };
 
 export default function Contact() {
+  const introText = "Whether you have a question, a project idea, or just want to say hi, I'd love to hear from you.";
+
   return (
-    <main className="min-h-[80vh] px-5 sm:px-6 py-10 font-sans flex flex-col items-center text-slate-100">
-      {/* Header */}
-      <header className="text-center mb-12 max-w-xl mx-auto">
-        <h1 className="text-3xl md:text-5xl font-bold text-slate-50 mb-2 tracking-tight">
-          Contact Me
-        </h1>
-        <p className="text-slate-300 text-lg md:text-xl mt-2 leading-relaxed">
-          Interested in working together or just want to say hi? Reach out!
-        </p>
-      </header>
-
-      {/* Contact Info */}
-      <section className="w-full max-w-lg px-6 sm:px-8 py-8 rounded-2xl shadow-xl shadow-black/30 bg-white/5 border border-white/10 backdrop-blur">
-        <ul className="space-y-6 text-slate-300 text-md">
-          <li className="flex items-center gap-3">
-            <img src={contactIcons.email} alt="Email" className="w-6 h-6" />
-            <span className="font-semibold">Email:</span>{" "}
-            <a
-              href="mailto:kolleparajayanth@gmail.com"
-              className="text-cyan-300 hover:text-cyan-200 hover:underline"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              kolleparajayanth@gmail.com
-            </a>
-          </li>
-          <li className="flex items-center gap-3">
-            <img src={contactIcons.phone} alt="Phone" className="w-6 h-6" />
-            <span className="font-semibold">Phone:</span>{" "}
-            <span className="text-slate-100">+91 8869965959</span>
-          </li>
-          <li className="flex items-center gap-3">
-            <img
-              src={contactIcons.linkedin}
-              alt="LinkedIn"
-              className="w-6 h-6"
-            />
-            <span className="font-semibold">LinkedIn:</span>{" "}
-            <a
-              href="https://www.linkedin.com/in/jayanth-kollepara-54876b319/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-indigo-300 hover:text-indigo-200 hover:underline"
-            >
-              linkedin.com/in/jayanth
-            </a>
-          </li>
-          <li className="flex items-center gap-3">
-            <img src={contactIcons.github} alt="GitHub" className="w-6 h-6" />
-            <span className="font-semibold">GitHub:</span>{" "}
-            <a
-              href="https://github.com/Jayanth-7-github"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-cyan-300 hover:text-cyan-200 hover:underline"
-            >
-              github.com/Jayanth-7-github
-            </a>
-          </li>
-        </ul>
-      </section>
-
-      {/* Call to Action */}
-      <div className="mt-12 text-center">
-        <span className="block text-lg text-indigo-200 font-semibold mb-2">
-          Ready to connect?
-        </span>
-        <a
-          href="mailto:kolleparajayanth@gmail.com"
-          className="inline-flex items-center justify-center bg-violet-600/90 text-white px-6 py-2.5 rounded-full shadow-lg shadow-violet-500/10 hover:bg-violet-600 hover:shadow-violet-500/20 hover:-translate-y-0.5 font-medium transition"
-        >
-          Send me an email
-        </a>
+    <PageWrapper className="flex items-center justify-center relative overflow-hidden">
+      {/* Grid Background */}
+      <div className="absolute inset-0 w-full h-full z-0 pointer-events-none">
+        <GridBackground />
       </div>
 
-      {/* Footer */}
-      <footer className="text-center text-sm text-slate-500 mt-12">
-        I’ll reply as quickly as possible • © 2025 Jayanth Kollepara
-      </footer>
-    </main>
+      <div className="relative z-10 w-full max-w-4xl px-6 py-12 flex flex-col items-center">
+
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.5 }}
+          className="w-full max-w-lg bg-slate-900/50 border border-white/10 backdrop-blur-xl rounded-3xl p-8 md:p-12 shadow-2xl relative overflow-hidden group"
+        >
+          {/* Ambient Background Glow */}
+          <div className="absolute -top-24 -right-24 w-48 h-48 bg-indigo-500/20 rounded-full blur-3xl group-hover:bg-indigo-500/30 transition duration-700" />
+          <div className="absolute -bottom-24 -left-24 w-48 h-48 bg-violet-500/20 rounded-full blur-3xl group-hover:bg-violet-500/30 transition duration-700" />
+
+          <div className="relative z-10 text-center">
+            <h1 className="text-4xl font-bold text-white mb-4 tracking-tight">
+              Get in Touch
+            </h1>
+            <div className="mb-10 text-center flex justify-center">
+              <TextGenerateEffect words={introText} className="text-slate-400 text-lg leading-relaxed font-normal" />
+            </div>
+
+            <div className="space-y-6 text-left">
+              <a
+                href="mailto:kolleparajayanth@gmail.com"
+                className="flex items-center gap-4 p-4 rounded-2xl bg-white/5 border border-white/5 hover:bg-white/10 hover:border-white/10 transition group/item"
+              >
+                <div className="p-3 bg-indigo-500/10 rounded-xl text-indigo-400 group-hover/item:text-indigo-300 transition">
+                  <svg width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                  </svg>
+                </div>
+                <div>
+                  <p className="text-xs text-slate-500 font-medium uppercase tracking-wider mb-0.5">Email</p>
+                  <p className="text-slate-200 font-medium break-all">kolleparajayanth@gmail.com</p>
+                </div>
+              </a>
+
+              <a
+                href="https://www.linkedin.com/in/jayanth-kollepara-54876b319/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-4 p-4 rounded-2xl bg-white/5 border border-white/5 hover:bg-white/10 hover:border-white/10 transition group/item"
+              >
+                <div className="p-3 bg-blue-500/10 rounded-xl text-blue-400 group-hover/item:text-blue-300 transition">
+                  <img src={contactIcons.linkedin} alt="LinkedIn" className="w-6 h-6" />
+                </div>
+                <div>
+                  <p className="text-xs text-slate-500 font-medium uppercase tracking-wider mb-0.5">LinkedIn</p>
+                  <p className="text-slate-200 font-medium">Jayanth Kollepara</p>
+                </div>
+              </a>
+
+              <a
+                href="https://github.com/Jayanth-7-github"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-4 p-4 rounded-2xl bg-white/5 border border-white/5 hover:bg-white/10 hover:border-white/10 transition group/item"
+              >
+                <div className="p-3 bg-slate-500/10 rounded-xl text-slate-400 group-hover/item:text-slate-300 transition">
+                  <img src={contactIcons.github} alt="GitHub" className="w-6 h-6" />
+                </div>
+                <div>
+                  <p className="text-xs text-slate-500 font-medium uppercase tracking-wider mb-0.5">GitHub</p>
+                  <p className="text-slate-200 font-medium">Jayanth-7-github</p>
+                </div>
+              </a>
+
+              <div className="flex items-center gap-4 p-4 rounded-2xl bg-white/5 border border-white/5">
+                <div className="p-3 bg-emerald-500/10 rounded-xl text-emerald-400">
+                  <img src={contactIcons.phone} alt="Phone" className="w-6 h-6" />
+                </div>
+                <div>
+                  <p className="text-xs text-slate-500 font-medium uppercase tracking-wider mb-0.5">Phone</p>
+                  <p className="text-slate-200 font-medium">+91 8869965959</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="mt-10">
+              <a
+                href="mailto:kolleparajayanth@gmail.com"
+                className="inline-flex items-center justify-center w-full py-4 bg-indigo-600 hover:bg-indigo-500 text-white rounded-xl font-bold shadow-lg shadow-indigo-500/25 transition transform hover:-translate-y-0.5"
+              >
+                Send a Message
+              </a>
+            </div>
+          </div>
+        </motion.div>
+
+
+      </div>
+    </PageWrapper>
   );
 }
