@@ -90,7 +90,8 @@ export default function Skills() {
     ["Others", others],
   ];
 
-  const introText = "A comprehensive toolkit of modern web technologies and programming languages.";
+  const introText =
+    "A comprehensive toolkit of modern web technologies and programming languages.";
 
   return (
     <PageWrapper className="flex flex-col items-center relative overflow-hidden">
@@ -110,7 +111,10 @@ export default function Skills() {
             My Skills
           </motion.h1>
           <div className="flex justify-center">
-            <TextGenerateEffect words={introText} className="text-slate-400 text-lg leading-relaxed font-normal" />
+            <TextGenerateEffect
+              words={introText}
+              className="text-slate-400 text-lg leading-relaxed font-normal"
+            />
           </div>
         </header>
 
@@ -123,7 +127,7 @@ export default function Skills() {
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, margin: "-50px" }}
-              className="bg-white/5 border border-white/10 rounded-3xl p-6 md:p-8 backdrop-blur-sm"
+              className="bg-slate-900/80 border border-white/10 rounded-3xl p-6 md:p-8 backdrop-blur-sm"
             >
               <h2 className="text-xl font-semibold text-indigo-200 mb-6 flex items-center gap-2">
                 <div className="h-1.5 w-1.5 rounded-full bg-indigo-400" />
@@ -134,9 +138,12 @@ export default function Skills() {
                   <motion.div
                     key={skill}
                     variants={itemVariants}
-                    whileHover={{ scale: 1.05, backgroundColor: "rgba(255,255,255,0.1)" }}
+                    whileHover={{
+                      scale: 1.05,
+                      backgroundColor: "rgba(255,255,255,0.1)",
+                    }}
                     whileTap={{ scale: 0.95 }}
-                    className="bg-white/5 border border-white/5 text-sm px-4 py-3 rounded-2xl shadow-lg shadow-black/20 transition-colors flex items-center gap-3 cursor-pointer group"
+                    className="bg-slate-900/80 border border-white/5 text-sm px-4 py-3 rounded-2xl shadow-lg shadow-black/20 transition-colors flex items-center gap-3 cursor-pointer group"
                   >
                     <a
                       href={skillLinks[skill]}
@@ -154,7 +161,9 @@ export default function Skills() {
                       ) : (
                         <span className="w-6 h-6 bg-slate-700 rounded-full" />
                       )}
-                      <span className="font-medium text-slate-200 group-hover:text-white transition-colors">{skill}</span>
+                      <span className="font-medium text-slate-200 group-hover:text-white transition-colors">
+                        {skill}
+                      </span>
                     </a>
                   </motion.div>
                 ))}
@@ -162,8 +171,6 @@ export default function Skills() {
             </motion.div>
           ))}
         </div>
-
-
       </div>
     </PageWrapper>
   );

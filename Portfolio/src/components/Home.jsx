@@ -14,14 +14,12 @@ export default function Home() {
 
   return (
     <PageWrapper className="flex flex-col items-center justify-center relative overflow-hidden">
-
       {/* Grid Background */}
       <div className="absolute inset-0 w-full h-full z-0 pointer-events-none">
         <GridBackground />
       </div>
 
       <main className="min-h-[85vh] px-5 sm:px-6 py-10 font-sans flex flex-col items-center justify-center text-slate-100 relative z-10 w-full max-w-7xl mx-auto">
-
         {/* Header Content */}
         <div className="text-center max-w-4xl mx-auto mb-16">
           <motion.div
@@ -46,10 +44,12 @@ export default function Home() {
 
           {/* Animated Text Description */}
           <div className="max-w-3xl mx-auto">
-            <TextGenerateEffect words={introText} className="text-lg text-slate-300 leading-relaxed font-normal" />
+            <TextGenerateEffect
+              words={introText}
+              className="text-lg text-slate-300 leading-relaxed font-normal"
+            />
           </div>
         </div>
-
 
         {/* Action Buttons */}
         <motion.div
@@ -66,7 +66,7 @@ export default function Home() {
           </Link>
           <Link
             to="/contact"
-            className="inline-flex items-center justify-center rounded-full px-8 py-3 text-lg font-medium text-slate-200 bg-white/5 border border-white/10 backdrop-blur-sm shadow-xl hover:bg-white/10 hover:border-white/20 hover:-translate-y-1 transition-all duration-300"
+            className="inline-flex items-center justify-center rounded-full px-8 py-3 text-lg font-medium text-slate-200 bg-slate-900 border border-white/10 backdrop-blur-sm shadow-xl hover:bg-slate-800 hover:border-white/20 hover:-translate-y-1 transition-all duration-300"
           >
             Contact Me
           </Link>
@@ -84,8 +84,14 @@ export default function Home() {
             <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/10 to-blue-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
             <div className="flex items-center mb-3 gap-3">
-              <img src={platformIcons.github} alt="GitHub" className="w-8 h-8 opacity-90" />
-              <span className="text-cyan-200 text-xl font-bold tracking-wide">GitHub</span>
+              <img
+                src={platformIcons.github}
+                alt="GitHub"
+                className="w-8 h-8 opacity-90"
+              />
+              <span className="text-cyan-200 text-xl font-bold tracking-wide">
+                GitHub
+              </span>
             </div>
             <a
               href="https://github.com/Jayanth-7-github"
@@ -96,7 +102,8 @@ export default function Home() {
               github.com/Jayanth-7-github
             </a>
             <p className="text-slate-400 text-sm">
-              Open-source contributions, repositories, and collaborative projects.
+              Open-source contributions, repositories, and collaborative
+              projects.
             </p>
           </div>
 
@@ -110,7 +117,9 @@ export default function Home() {
                 alt="LeetCode"
                 className="w-8 h-8 opacity-90"
               />
-              <span className="text-orange-200 text-xl font-bold tracking-wide">LeetCode</span>
+              <span className="text-orange-200 text-xl font-bold tracking-wide">
+                LeetCode
+              </span>
             </div>
             <a
               href="https://leetcode.com/u/Jayanth-7/"
@@ -125,8 +134,6 @@ export default function Home() {
             </p>
           </div>
         </motion.section>
-
-
       </main>
     </PageWrapper>
   );
