@@ -6,52 +6,95 @@ import { TextGenerateEffect } from "./ui/TextGenerateEffect";
 
 const projects = [
   {
-    name: "EcoSphere",
-    desc: "An eco-conscious community platform for resilient support during natural disasters. Features resource sharing, alert system, and more.",
-    img: "",
-    repo: "https://github.com/kalviumcommunity/s81_Jayanth_Ecosphere",
-    demo: "https://ecospheere.netlify.app/",
-    tags: ["React", "Node.js", "Community"],
-  },
-  {
     name: "Tara",
-    desc: "An event management system for organizing events and streamlining coordination.",
+    desc: "An event management platform for organizing and coordinating events. Available on both mobile and web versions, actively serving 1350+ users with continuous enhancements driven by real user feedbacks and iterative changes.",
     img: "",
     repo: "https://github.com/Jayanth-7-github/Tara",
     demo: "https://taara.netlify.app/",
-    tags: ["Event Management", "Web App", "React", "Node.js", "MongoDB"],
+    badge: "1350+ Users · Web & Mobile",
+    category: "Web & Mobile App",
+    tags: ["Event Management", "Web App", "Mobile App", "React", "Node.js", "1350+ Users"],
   },
   {
-    name: "Rock Paper Scissors",
-    desc: "Fun interactive rock-paper-scissors game. Play online, test your luck and see simple state/game logic.",
+    name: "EcoSphere",
+    desc: "An eco-conscious community platform for resilient support during natural disasters. Features resource sharing, alert system, and volunteer coordination.",
     img: "",
-    repo: "https://github.com/Jayanth-7-github/Rock_Paper_Siccors",
-    demo: "https://frolicking-praline-14031b.netlify.app/",
-    tags: ["React", "Game", "JavaScript"],
+    repo: "https://github.com/kalviumcommunity/s81_Jayanth_Ecosphere",
+    demo: "https://ecospheere.netlify.app/",
+    category: "Web Platform",
+    tags: ["React", "Node.js", "Community", "Disaster Relief"],
+  },
+  {
+    name: "Knovera",
+    desc: "Enterprise Grounded RAG Studio — a full-stack, enterprise-grade Retrieval-Augmented Generation platform featuring FastAPI backend, hybrid search & reranking, ChromaDB vector indexing, and a modern Next.js (React 19 / TypeScript) web app.",
+    img: "",
+    repo: "https://github.com/kalviumcommunity/Knovera",
+    demo: "",
+    category: "Enterprise AI / RAG",
+    tags: ["FastAPI", "Next.js", "Python", "RAG", "ChromaDB", "AI"],
+  },
+  {
+    name: "Sara",
+    desc: "An autonomous AI phone call assistant and Android default dialer built using Flutter and Android Telecom APIs. Features call screening, incoming/outgoing call handling, auto-answer rules, and smart voice call workflows.",
+    img: "",
+    repo: "https://github.com/Jayanth-7-github/Sara",
+    demo: "",
+    category: "Mobile App · Flutter",
+    tags: ["Flutter", "Android Telecom", "Dart", "AI Assistant", "Mobile App"],
+  },
+  {
+    name: "Marco",
+    desc: "An AI-powered voice and conversational assistant mobile app built with React Native and Expo. Integrates local AI reasoning, persistent memories, news services, and voice audio interaction.",
+    img: "",
+    repo: "https://github.com/Jayanth-7-github/Marco_backend",
+    demo: "",
+    category: "Mobile App · React Native",
+    tags: ["React Native", "Expo", "Voice AI", "Local LLM", "Mobile App"],
+  },
+  {
+    name: "Workaholic",
+    desc: "A mobile productivity and task management application built using React Native, Expo, and NativeWind. Features interactive task tracking, calendar management, and custom local notifications.",
+    img: "",
+    repo: "https://github.com/Jayanth-7-github/Mobile_Backend",
+    demo: "",
+    category: "Mobile App · React Native",
+    tags: ["React Native", "Expo", "NativeWind", "Task Management", "Mobile App"],
   },
   {
     name: "Yexo",
-    desc: "A real-time chat web and mobile app for messaging and conversations.",
+    desc: "A real-time messaging and chat application available across web and mobile. Features one-on-one and group messaging, call screens, dynamic themes, and WebSocket-driven live communications.",
     img: "",
     repo: "https://github.com/Jayanth-7-github/Yexo",
     demo: "https://yexochat.netlify.app/",
+    category: "Web & Mobile App",
     tags: ["Chat App", "Real-time", "Web App", "Mobile App", "React"],
+  },
+  {
+    name: "Patient Management",
+    desc: "A full-stack healthcare web app to register patients, manage lab tests, book appointments, and download reports. JWT-secured authentication and admin dashboard.",
+    img: "",
+    repo: "https://github.com/Jayanth-7-github/PatientManagment",
+    demo: "https://labtes.netlify.app/",
+    category: "Healthcare Web App",
+    tags: ["React", "Node.js", "Express", "MongoDB", "Tailwind"],
   },
   {
     name: "E-commerce",
     desc: "A full-stack platform for managing products, categories, and inventory using the MERN stack (MongoDB, Express, React, Node). Includes admin dashboard.",
     img: "",
     repo: "https://github.com/Jayanth-7-github/Follow-Along-Eshop",
-    demo: "",
+    demo: "https://ecom-eta-khaki.vercel.app",
+    category: "MERN Stack",
     tags: ["React", "Node.js", "MongoDB", "Express"],
   },
   {
-    name: "Patient Management",
-    desc: "A full-stack web app to register patients, manage lab tests, booking, and downloading reports. JWT-secured authentication and admin dashboard.",
+    name: "Rock Paper Scissors",
+    desc: "Fun interactive rock-paper-scissors game. Play online, test your luck, and see simple state/game logic.",
     img: "",
-    repo: "https://github.com/Jayanth-7-github/PatientManagment",
-    demo: "https://labtes.netlify.app/",
-    tags: ["React", "Node.js", "Express", "MongoDB", "Tailwind"],
+    repo: "https://github.com/Jayanth-7-github/Rock_Paper_Siccors",
+    demo: "https://frolicking-praline-14031b.netlify.app/",
+    category: "Web Game",
+    tags: ["React", "Game", "JavaScript"],
   },
   {
     name: "Snake & Ladders",
@@ -59,6 +102,7 @@ const projects = [
     img: "",
     repo: "https://github.com/Jayanth-7-github/SnakeAndLadders",
     demo: "",
+    category: "Web Game",
     tags: ["JavaScript", "Python", "Game"],
   },
 ];
@@ -79,7 +123,7 @@ const ProjectCardContent = ({ project, preview, isBroken, onImageError }) => {
   return (
     <div className="flex flex-col h-full">
       {/* Image Preview */}
-      <div className="w-full h-40 bg-slate-900/80 border border-white/10 rounded-xl mb-4 overflow-hidden relative group-hover:scale-[1.02] transition-transform duration-300">
+      <div className="w-full h-40 bg-slate-900 border border-white/10 rounded-xl mb-4 overflow-hidden relative group-hover:scale-[1.02] transition-transform duration-300">
         {preview && !isBroken ? (
           <img
             src={preview}
@@ -89,23 +133,19 @@ const ProjectCardContent = ({ project, preview, isBroken, onImageError }) => {
             onError={onImageError}
           />
         ) : (
-          <div className="w-full h-full flex flex-col items-center justify-center text-slate-500 bg-slate-900/80">
-            <svg
-              width="24"
-              height="24"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              className="mb-2 opacity-50"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
-              />
-            </svg>
-            <span className="text-xs">No Preview</span>
+          <div className="w-full h-full flex flex-col items-center justify-center text-slate-500 bg-slate-900 p-4 text-center">
+            <span className="text-xl font-bold tracking-tight text-slate-200 mb-1">
+              {project.name}
+            </span>
+            <span className="text-xs text-indigo-400 font-medium tracking-wide">
+              {project.category || (project.tags && project.tags[0]) || "Project"}
+            </span>
+          </div>
+        )}
+
+        {project.badge && (
+          <div className="absolute top-2.5 right-2.5 bg-emerald-600 text-white font-semibold text-[10px] px-2.5 py-0.5 rounded-full shadow-md border border-emerald-400/40">
+            {project.badge}
           </div>
         )}
       </div>
@@ -117,7 +157,7 @@ const ProjectCardContent = ({ project, preview, isBroken, onImageError }) => {
 
       {/* Tags */}
       <div className="flex flex-wrap gap-2 mb-4">
-        {project.tags?.slice(0, 4).map((tag) => (
+        {project.tags?.slice(0, 5).map((tag) => (
           <span
             key={tag}
             className="bg-zinc-800 text-zinc-300 px-2 py-0.5 rounded text-[10px] font-medium tracking-wide border border-zinc-700"

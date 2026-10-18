@@ -28,7 +28,7 @@ export default function Home() {
             transition={{ duration: 0.5 }}
             className="relative inline-block"
           >
-            <h1 className="text-5xl md:text-7xl font-bold bg-clip-text text-transparent bg-gradient-to-b from-neutral-50 to-neutral-400 bg-opacity-50 pb-4 tracking-tight">
+            <h1 className="text-5xl md:text-7xl font-bold text-white pb-4 tracking-tight">
               Kollepara Jayanth Vallabh
             </h1>
           </motion.div>
@@ -60,13 +60,35 @@ export default function Home() {
         >
           <Link
             to="/projects"
-            className="inline-flex items-center justify-center rounded-full px-8 py-3 text-lg font-medium text-white bg-gradient-to-r from-indigo-500 to-violet-600 shadow-lg shadow-indigo-500/25 hover:shadow-indigo-500/40 hover:-translate-y-1 transition-all duration-300"
+            className="inline-flex items-center justify-center rounded-full px-8 py-3 text-lg font-medium text-white bg-indigo-600 hover:bg-indigo-500 shadow-lg shadow-indigo-600/20 hover:-translate-y-1 transition-all duration-300"
           >
             View Projects
           </Link>
+          <a
+            href="/resume.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center justify-center gap-2 rounded-full px-8 py-3 text-lg font-medium text-white bg-violet-600 hover:bg-violet-500 shadow-lg shadow-violet-600/20 hover:-translate-y-1 transition-all duration-300"
+          >
+            <svg
+              width="20"
+              height="20"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              strokeWidth="2"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+              />
+            </svg>
+            Resume
+          </a>
           <Link
             to="/contact"
-            className="inline-flex items-center justify-center rounded-full px-8 py-3 text-lg font-medium text-slate-200 bg-slate-900 border border-white/10 backdrop-blur-sm shadow-xl hover:bg-slate-800 hover:border-white/20 hover:-translate-y-1 transition-all duration-300"
+            className="inline-flex items-center justify-center rounded-full px-8 py-3 text-lg font-medium text-slate-200 bg-slate-900 border border-white/10 shadow-xl hover:bg-slate-800 hover:border-white/20 hover:-translate-y-1 transition-all duration-300"
           >
             Contact Me
           </Link>
@@ -80,9 +102,7 @@ export default function Home() {
           className="w-full max-w-4xl grid grid-cols-1 md:grid-cols-2 gap-6"
         >
           {/* GitHub Card */}
-          <div className="group relative overflow-hidden bg-gradient-to-br from-white/5 to-white/0 border border-white/10 px-8 py-6 rounded-3xl shadow-2xl backdrop-blur-md hover:border-white/20 transition-all duration-300">
-            <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/10 to-blue-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-
+          <div className="group relative overflow-hidden bg-slate-900 border border-white/10 px-8 py-6 rounded-3xl shadow-xl hover:border-cyan-400/40 transition-all duration-300">
             <div className="flex items-center mb-3 gap-3">
               <img
                 src={platformIcons.github}
@@ -108,9 +128,7 @@ export default function Home() {
           </div>
 
           {/* LeetCode Card */}
-          <div className="group relative overflow-hidden bg-gradient-to-br from-white/5 to-white/0 border border-white/10 px-8 py-6 rounded-3xl shadow-2xl backdrop-blur-md hover:border-white/20 transition-all duration-300">
-            <div className="absolute inset-0 bg-gradient-to-r from-orange-500/10 to-yellow-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-
+          <div className="group relative overflow-hidden bg-slate-900 border border-white/10 px-8 py-6 rounded-3xl shadow-xl hover:border-orange-400/40 transition-all duration-300">
             <div className="flex items-center mb-3 gap-3">
               <img
                 src={platformIcons.leetcode}

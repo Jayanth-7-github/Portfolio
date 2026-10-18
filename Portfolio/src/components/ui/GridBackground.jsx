@@ -32,7 +32,7 @@ export function GridBackground({ className = "", children, mask = true }) {
 
       {/* Content */}
       {children && (
-        <div className="relative z-20 bg-gradient-to-b from-neutral-200 to-neutral-500 bg-clip-text text-transparent">
+        <div className="relative z-20 text-neutral-200">
           {children}
         </div>
       )}
